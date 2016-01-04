@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlzkj.app.mapper.CadreMapper" >
+  <resultMap id="BaseResultMap" type="com.zlzkj.app.model.Cadre" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cadre_name" property="cadreName" jdbcType="VARCHAR" />
+    <result column="cadre_sex" property="cadreSex" jdbcType="INTEGER" />
+    <result column="area_id" property="areaId" jdbcType="INTEGER" />
+    <result column="department_id" property="departmentId" jdbcType="INTEGER" />
+    <result column="duties_id" property="dutiesId" jdbcType="INTEGER" />
+    <result column="office_tel" property="officeTel" jdbcType="VARCHAR" />
+    <result column="moble_phone" property="moblePhone" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cadre_name, cadre_sex, area_id, department_id, duties_id, office_tel, moble_phone, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from x_cadre
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from x_cadre
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlzkj.app.model.Cadre" >
+    insert into x_cadre
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cadreName != null" >
+        cadre_name,
+      </if>
+      <if test="cadreSex != null" >
+        cadre_sex,
+      </if>
+      <if test="areaId != null" >
+        area_id,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="dutiesId != null" >
+        duties_id,
+      </if>
+      <if test="officeTel != null" >
+        office_tel,
+      </if>
+      <if test="moblePhone != null" >
+        moble_phone,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cadreName != null" >
+        #{cadreName,jdbcType=VARCHAR},
+      </if>
+      <if test="cadreSex != null" >
+        #{cadreSex,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="dutiesId != null" >
+        #{dutiesId,jdbcType=INTEGER},
+      </if>
+      <if test="officeTel != null" >
+        #{officeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="moblePhone != null" >
+        #{moblePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zlzkj.app.model.Cadre" >
+    update x_cadre
+    <set >
+      <if test="cadreName != null" >
+        cadre_name = #{cadreName,jdbcType=VARCHAR},
+      </if>
+      <if test="cadreSex != null" >
+        cadre_sex = #{cadreSex,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="dutiesId != null" >
+        duties_id = #{dutiesId,jdbcType=INTEGER},
+      </if>
+      <if test="officeTel != null" >
+        office_tel = #{officeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="moblePhone != null" >
+        moble_phone = #{moblePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
